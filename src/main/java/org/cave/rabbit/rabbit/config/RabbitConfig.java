@@ -55,7 +55,7 @@ public class RabbitConfig implements RabbitListenerConfigurer {
      * Criamos esse Bean, passando as informações da conexão e principalmente o ApplicationContext.
      * <p>
      * As Filas e outros Knowlege Objects do Rabbit, caso não existam, sao criados durante o POST de uma mensagem.
-     * Porém, não é possível criar esses KOs com consumidores, a menos que seja invocado ométodo #initialize do RabbitAdmin.
+     * Porém, não é possível criar esses KOs com consumidores, a menos que se invoque método #initialize do RabbitAdmin.
      * <p>
      * Uma forma de fazer isso é invocando manualmente o initialize dentro da classe Main do micro serviço.
      * Outra forma é declarando o bean para que receba o Application Context, assim ele participa do contexto de startup da aplicação
