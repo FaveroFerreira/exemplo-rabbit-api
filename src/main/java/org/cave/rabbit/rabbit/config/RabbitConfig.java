@@ -19,12 +19,11 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 
 /**
  * Essa é a primeira classe que devemos criar e dar atenção quando pensamos em um serviço que usa RabbitMQ.
- *
+ * <p>
  * Essa configuração não precisa estar centralizada aqui. Algumas pessoas gostam quebrar ela em diversas configs.
- *
  */
 @Data
-@EnableRabbit
+@EnableRabbit // Habilita a detecção das anotações @RabbitListener
 @Configuration
 public class RabbitConfig implements RabbitListenerConfigurer {
 
@@ -36,7 +35,7 @@ public class RabbitConfig implements RabbitListenerConfigurer {
     /**
      * Dados da conexão etc...
      *
-     * @return
+     * @return ConnectionFactory
      */
     @Bean
     @Primary
@@ -61,9 +60,9 @@ public class RabbitConfig implements RabbitListenerConfigurer {
      * Outra forma é declarando o bean para que receba o Application Context, assim ele participa do contexto de startup da aplicação
      * e invoca o #initialize automáticamente.
      *
-     * @param applicationContext
-     * @param connectionFactory
-     * @return
+     * @param applicationContext ApplicationContext do Spring
+     * @param connectionFactory  #{@link #connectionFactory()}
+     * @return RabbitAdmin
      */
     @Bean
     @Primary
@@ -80,8 +79,8 @@ public class RabbitConfig implements RabbitListenerConfigurer {
      * Usado para POSTAR mensagens na fila.
      * Aqui usamos para fins de retentativas.
      *
-     * @param connectionFactory
-     * @return
+     * @param connectionFactory {@link #connectionFactory()}
+     * @return RabbitTemplate
      */
     @Bean
     @Primary
@@ -91,9 +90,9 @@ public class RabbitConfig implements RabbitListenerConfigurer {
 
 
     /**
-     * ObjectMapper pra converter mensagens
+     * {@link ObjectMapper}, para converter mensagens para objetos
      *
-     * @return
+     * @return MappingJackson2MessageConverter usando {@link ObjectMapper}
      */
     @Bean
     public MappingJackson2MessageConverter jackson2Converter() {
@@ -104,15 +103,12 @@ public class RabbitConfig implements RabbitListenerConfigurer {
 
     /**
      * Existem N formas de usar RabbitMQ. A que usamos é a Annotation-Driven.
-     *
-     * Para garantir o funcionamento correto dos métodos anotados com @RabbitListener (métodos que recebem as mensagens)
-     * precisamos de um Bean que lide com os ARGUMENTOS recebidos nos métodos (as mensagens)
-     *
-     * É para isso que serve esse cara
-     *
+     * <p>
+     * Resumidamente serve para lidar com os argumentos dos metodos anotados com @{@link org.springframework.amqp.rabbit.annotation.RabbitListener}
+     * <p>
      * ref: https://docs.spring.io/spring-amqp/reference/pdf/spring-amqp-reference.pdf
      *
-     * @return
+     * @return DefaultMessageHandlerMethodFactory
      */
     @Bean
     DefaultMessageHandlerMethodFactory handlerMethodFactory() {
@@ -122,7 +118,7 @@ public class RabbitConfig implements RabbitListenerConfigurer {
     }
 
     /**
-     * Configura @RabbitListener
+     * Adiciona o handler para @{@link org.springframework.amqp.rabbit.annotation.RabbitListener}
      *
      * @param register
      */
