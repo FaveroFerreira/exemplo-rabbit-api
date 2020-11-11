@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * Nessa fila, iremos programaticamente configurar o fluxo de exchange, fila, binding, delayed e dlq do RabbitMQ.
+ * Nessa classe, iremos programaticamente configurar o fluxo de exchange, fila, binding, delayed e dlq do RabbitMQ.
  * <p>
  * - Exchange
  * - Fila Normal
