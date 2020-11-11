@@ -55,7 +55,7 @@ public class NomeDoProcessoConfig {
      * Aqui iremos fazer algumas configurações para o que deve acontecer com as mensagens caso seu (TTL)Time To Live expire.
      * <p>
      * x-dead-letter-exchange -  Não usaremos uma DLQ Exchange iremos direcionar as mensagens mortas diretamente a uma fila.
-     * x-dead-letter-routing-key - Declaramos diretamente o nome da fila. O Rabbit irá direcionar as filas mortas diretamente pra lá.
+     * x-dead-letter-routing-key - Declaramos diretamente o nome da fila. O Rabbit irá direcionar as mensagens mortas diretamente pra lá.
      *
      * @return Fila
      */
