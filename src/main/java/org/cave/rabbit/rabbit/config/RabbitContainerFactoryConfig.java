@@ -77,7 +77,7 @@ public class RabbitContainerFactoryConfig {
     }
 
     @Bean
-    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> customerPromotionCreateContainerFactory (ConnectionFactory connectionFactory) {
+    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> outroProcessoContainerFactory (ConnectionFactory connectionFactory) {
         return null;
     }
 
