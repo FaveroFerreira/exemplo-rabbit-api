@@ -34,6 +34,9 @@ public class RabbitContainerFactoryConfig {
     public static final String NOME_DO_PROCESSO_FACTORY_NAME = "nomeDoProcessoContainerFactory";
     public static final String OUTRO_FACTORY_NAME = "...";
 
+    /**
+     * Esses valores do .properties/.yml, por favor
+     */
     private static final Integer CONCURRENT_CONSUMER = 3;
     private static final Integer CONCURRENT_MAX_CONSUMER = 3;
     private static final boolean DEFAULT_REQUEUE_REJECTED = false;

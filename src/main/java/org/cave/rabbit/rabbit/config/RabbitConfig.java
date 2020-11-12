@@ -27,6 +27,9 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 @Configuration
 public class RabbitConfig implements RabbitListenerConfigurer {
 
+    /**
+     * Esses valores do .properties/.yml, por favor
+     */
     private String addresses = "localhost";
     private String username = "use-exemplo";
     private String password = "C0nnect123";
