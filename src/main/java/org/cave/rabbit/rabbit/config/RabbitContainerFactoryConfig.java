@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * Caso seja necessário configurar o container factory padrão, é possível fazer essa configuração de uma maneira
  * muito mais simples via application.properties/application.yml porém, essa aplicação irá refletir de maneira geral
- * para todas as filas.
+ * para todos os Listeners.
  *
  * Essa classe é usada quando uma aplicação possui diferentes necessidades para diferentes listeners.
  */
