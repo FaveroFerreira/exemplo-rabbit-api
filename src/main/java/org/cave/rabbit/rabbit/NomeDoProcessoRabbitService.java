@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class NomeDoProcessoRabbitService {
 
     @RabbitListener(
-            queues = {RabbitQueueConstants.PROCESSO_QUEUE },
+            queues = { RabbitQueueConstants.PROCESSO_QUEUE },
             containerFactory = RabbitContainerFactoryConfig.NOME_DO_PROCESSO_FACTORY_NAME
     )
     public void consumer(Message message) {
