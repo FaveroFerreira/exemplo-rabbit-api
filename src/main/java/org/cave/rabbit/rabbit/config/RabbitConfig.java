@@ -27,10 +27,10 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 @Configuration
 public class RabbitConfig implements RabbitListenerConfigurer {
 
-    private String addresses;
-    private String username;
-    private String password;
-    private String virtualHost;
+    private String addresses = "localhost";
+    private String username = "use-exemplo";
+    private String password = "C0nnect123";
+    private String virtualHost = "para-exemplo";
 
     /**
      * Dados da conexão etc...
